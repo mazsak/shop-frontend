@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Home from './components/Home';
 import Profile from './components/Profile';
-import Settings from './components/Settings';
+import Product from './components/Product';
 import Error from './components/Error';
 
 const App = () => {
@@ -13,8 +13,8 @@ const App = () => {
       <div>
         <Switch>
           <Route path="/" component={Home} exact />
+          <Route path="/product/:id" component={Product} />
           <Route path="/profile" component={Profile} />
-          <Route path="/settings" component={Settings} />
           <Route component={Error} />
         </Switch>
       </div>

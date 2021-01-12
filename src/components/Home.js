@@ -51,7 +51,6 @@ const Home = (props) => {
         fetchData();
     }, []);
 
-    console.log(directories);
     return (
         <div>
             <nav>
@@ -64,7 +63,7 @@ const Home = (props) => {
                             <Spinner animation="grow" variant="light" />
                         </Card>
                     ) : (
-                            <Accordion>
+                            <Accordion >
                                 {directories.map((item, index) =>
                                     <Card bg='dark' text='white'>
                                         <Accordion.Toggle as={Button} variant="link" onClick={ async () => {
@@ -73,7 +72,7 @@ const Home = (props) => {
                                             setCurrentPage(1);
                                             loadProducts(item.name, '',1);
                                         }} eventKey={item.id}>{item.name}</Accordion.Toggle>
-                                        <Accordion.Collapse eventKey={item.id}>
+                                        <Accordion.Collapse eventKey={item.id} key={item.id}>
                                             <Card.Body>
                                                 {item.subdirectories.map((subdirectory) =>
                                                     <div className='row' style={{ paddingLeft: '20px' }}>
@@ -93,7 +92,7 @@ const Home = (props) => {
                 </div>
                 <div className='col' style={{ padding: '20px' }}>
                     <Card bg='dark' text='white' style={{ padding: '10px' }}>
-                        <h3>Products from: {currentDirectory}{currentSubdirectory != '' ? ', ' + currentSubdirectory : ''}</h3>
+                        <h3>Products from: {currentDirectory}{currentSubdirectory !== '' ? ', ' + currentSubdirectory : ''}</h3>
                     </Card>
                     {isLoadingProducts && products.length === 0 ? (
                         <Card bg='dark' text='white' style={{ padding: '10px', display: "flex", justifyContent: "center", alignItems: "center" }}>
