@@ -1,7 +1,7 @@
 import React from 'react';
 import NavBar from './NavBar';
 
-Error = () => {
+const Error = () => {
     return (
         <div>
             <nav>

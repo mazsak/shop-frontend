@@ -8,6 +8,7 @@ const Profile = (props) =>{
                 <NavBar/>
             </nav>
             <h1>Profile</h1>
+            
         </div>
     );
 };

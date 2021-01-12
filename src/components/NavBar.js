@@ -1,8 +1,7 @@
 import React from 'react';
 import {
     Navbar,
-    Nav,
-    NavDropdown
+    Nav
 } from 'react-bootstrap';
 
 const NavBar = () => {
