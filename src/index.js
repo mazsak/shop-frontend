@@ -4,11 +4,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+if ( localStorage.getItem('products') === null ) {
+  localStorage.setItem('products', JSON.stringify([]));
+}
 document.body.style = 'background:black;';
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+    <React.StrictMode>
+      <App />
+    </React.StrictMode>,
   document.getElementById('root')
 );
 
