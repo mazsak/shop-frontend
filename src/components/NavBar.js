@@ -7,13 +7,24 @@ import {
 const NavBar = () => {
     return (
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-            <Navbar.Brand href="/">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="/">Shop</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
+                    {JSON.parse(localStorage.getItem('token')) !== '' ? (
+                        <Nav.Link href="/orders">Orders</Nav.Link>
+                    ) : (
+                            <></>
+                        )}
                 </Nav>
                 <Nav>
-                    <Nav.Link href="#deets">More deets</Nav.Link>
+                    {JSON.parse(localStorage.getItem('token')) !== '' ? (
+                        <Nav.Link href="/login" onClick={() => {
+                            localStorage.setItem('token', JSON.stringify(''));
+                        }}>Logout</Nav.Link>
+                    ) : (
+                            <Nav.Link href="/login">Login</Nav.Link>
+                        )}
                     <Nav.Link href="/cart">Cart</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

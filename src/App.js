@@ -8,6 +8,7 @@ import Product from './components/Product';
 import Cart from './components/Cart';
 import Login from './components/Login';
 import Register from './components/Register';
+import Orders from './components/Orders';
 import Error from './components/Error';
 
 const App = () => {
@@ -20,6 +21,7 @@ const App = () => {
           <Route path="/cart" component={Cart} />
           <Route path="/login" component={Login} />
           <Route path="/register" component={Register} />
+          <Route path="/orders" component={Orders} />
           <Route path="/profile" component={Profile} />
           <Route component={Error} />
         </Switch>

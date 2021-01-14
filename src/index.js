@@ -7,6 +7,9 @@ import reportWebVitals from './reportWebVitals';
 if ( localStorage.getItem('products') === null ) {
   localStorage.setItem('products', JSON.stringify([]));
 }
+if ( localStorage.getItem('token') === null ) {
+  localStorage.setItem('token', JSON.stringify(''));
+}
 document.body.style = 'background:black;';
 ReactDOM.render(
     <React.StrictMode>

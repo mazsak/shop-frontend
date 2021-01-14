@@ -5,8 +5,11 @@ import {
     Spinner,
     Form,
     Button,
-    Alert
+    Alert,
+    Row,
+    Col
 } from 'react-bootstrap';
+import { RegisterApi } from './../requests/user';
 
 const Register = (props) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -23,7 +26,7 @@ const Register = (props) => {
             </nav>
             <div style={{ width: '50%', marginLeft: 'auto', marginRight: 'auto' }}>
                 <Card bg='dark' text='white' style={{ padding: '10px', margin: '10px', display: "flex", justifyContent: "center", alignItems: "center" }}>
-                    <Form style={{width: '90%', marginLeft: 'auto', marginRight: 'auto'}}>
+                    <Form style={{ width: '90%', marginLeft: 'auto', marginRight: 'auto' }}>
                         <Alert show={showErrorUsername} variant="danger">Too short Username</Alert>
                         <Alert show={showErrorPassword} variant="danger">Too short Password</Alert>
                         <Alert show={showErrorConfirmPassword} variant="danger">Unequal Passwords</Alert>
@@ -48,31 +51,38 @@ const Register = (props) => {
                             />
                         </Form.Group>
                     </Form>
-                    <Button type="submit" href="/login" onClick={() => {
-                        let register = true;
-                        setShowErrorConfirmPassword(false);
-                        setShowErrorPassword(false);
-                        setShowErrorUsername(false);
-                        if (password.trim() !== confirmPassword.trim()) {
-                            register = false;
-                            setShowErrorConfirmPassword(true);
-                        }
-                        if (password.length < 8) {
-                            register = false;
-                            setShowErrorPassword(true);
-                        }
-                        if (username.length < 4) {
-                            register = false;
-                            setShowErrorUsername(true);
-                        }
-                        if (register) {
-                            setIsLoading(true);
+                    <Row>
+                        <Col>
+                            <Button href='/login'>Cancel</Button>
+                        </Col>
+                        <Col>
+                            <Button type="submit" href="/login" onClick={() => {
+                                let register = true;
+                                setShowErrorConfirmPassword(false);
+                                setShowErrorPassword(false);
+                                setShowErrorUsername(false);
+                                if (password.trim() !== confirmPassword.trim()) {
+                                    register = false;
+                                    setShowErrorConfirmPassword(true);
+                                }
+                                if (password.length < 8) {
+                                    register = false;
+                                    setShowErrorPassword(true);
+                                }
+                                if (username.length < 4) {
+                                    register = false;
+                                    setShowErrorUsername(true);
+                                }
+                                if (register) {
+                                    setIsLoading(true);
 
+                                    RegisterApi(username, password);
 
-
-                            setIsLoading(false);
-                        }
-                    }}>Register</Button>
+                                    setIsLoading(false);
+                                }
+                            }}>Register</Button>
+                        </Col>
+                    </Row>
                     <Spinner animation="grow" variant="light" hidden={!isLoading} />
                 </Card>
             </div>

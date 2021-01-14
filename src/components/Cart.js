@@ -8,6 +8,8 @@ import {
     Row,
     Card
 } from 'react-bootstrap';
+import { OrdersApi } from './../requests/user';
+
 
 const Cart = (props) => {
     const [products, setProducts] = useState(JSON.parse(localStorage.getItem('products')));
@@ -65,7 +67,15 @@ const Cart = (props) => {
                             <h4>{totalPrice} $</h4>
                         </Col>
                         <Col xs style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <Button>Buy</Button>
+                            <Button href='#' onClick={ async () =>{
+                                if (JSON.parse(localStorage.getItem('token')) !== ''){
+                                    await OrdersApi();
+                                    localStorage.setItem('products', JSON.stringify([]));
+                                    document.location.href = '/cart';
+                                }else{
+                                    document.location.href = '/login';
+                                }
+                            }}>Buy</Button>
                         </Col>
                     </Row>
                 </Card>
