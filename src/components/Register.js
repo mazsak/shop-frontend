@@ -56,7 +56,7 @@ const Register = (props) => {
                             <Button href='/login'>Cancel</Button>
                         </Col>
                         <Col>
-                            <Button type="submit" href="/login" onClick={() => {
+                            <Button type="submit" onClick={() => {
                                 let register = true;
                                 setShowErrorConfirmPassword(false);
                                 setShowErrorPassword(false);
@@ -79,6 +79,7 @@ const Register = (props) => {
                                     RegisterApi(username, password);
 
                                     setIsLoading(false);
+                                    document.location.href= '/login';
                                 }
                             }}>Register</Button>
                         </Col>

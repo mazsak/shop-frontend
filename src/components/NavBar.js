@@ -16,11 +16,18 @@ const NavBar = () => {
                     ) : (
                             <></>
                         )}
+                    {JSON.parse(localStorage.getItem('role')) === 'ROLE_ADMIN' ? (
+                        <Nav.Link href="/admin">Admin panel</Nav.Link>
+
+                    ) : (
+                            <></>
+                        )}
                 </Nav>
                 <Nav>
                     {JSON.parse(localStorage.getItem('token')) !== '' ? (
                         <Nav.Link href="/login" onClick={() => {
                             localStorage.setItem('token', JSON.stringify(''));
+                            localStorage.setItem('role', JSON.stringify(''));
                         }}>Logout</Nav.Link>
                     ) : (
                             <Nav.Link href="/login">Login</Nav.Link>

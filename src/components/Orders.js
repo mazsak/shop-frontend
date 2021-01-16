@@ -46,17 +46,28 @@ const Orders = (props) => {
                                         <Card.Body>
                                             {order.shopItems.map((item) =>
                                             (
+
                                                 <Card bg='dark' text='white'>
                                                     <Row>
-
-                                                        <Col >
-                                                            <ItemProduct id={item.product.id} item={item.product} />
-                                                        </Col>
-                                                        <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                                            <h4>{item.product.price} $</h4>
-                                                        </Col>
+                                                        {item.product !== null ? (
+                                                            <>
+                                                                <Col >
+                                                                    <ItemProduct id={item.product.id} item={item.product} />
+                                                                </Col>
+                                                                <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                                                    <h4>{item.product.price} $</h4>
+                                                                </Col>
+                                                            </>
+                                                        ) : (<>
+                                                            <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                                                <h4>Product deleted</h4>
+                                                            </Col>
+                                                            <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
+                                                                <h4>Product deleted</h4>
+                                                            </Col>
+                                                        </>)}
                                                         <Col xs style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                                        <h5>Amount: {item.amount}</h5>
+                                                            <h5>Amount: {item.amount}</h5>
                                                         </Col>
                                                     </Row>
                                                 </Card>
@@ -67,7 +78,7 @@ const Orders = (props) => {
                                                         <h4>Total price:</h4>
                                                     </Col>
                                                     <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                                                        <h4>{order.totalPrice} $</h4>
+                                                        <h4>{order.totalPrice.toFixed(2)} $</h4>
                                                     </Col>
                                                     <Col xs style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                                                     </Col>
@@ -80,7 +91,7 @@ const Orders = (props) => {
                         </Accordion>
                     )}
             </div>
-        </div>
+        </div >
     );
 };
 

@@ -64,7 +64,7 @@ const Cart = (props) => {
                             <h4>Total price:</h4>
                         </Col>
                         <Col style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-                            <h4>{totalPrice} $</h4>
+                            <h4>{totalPrice.toFixed(2)} $</h4>
                         </Col>
                         <Col xs style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
                             <Button href='#' onClick={ async () =>{

@@ -10,6 +10,9 @@ if ( localStorage.getItem('products') === null ) {
 if ( localStorage.getItem('token') === null ) {
   localStorage.setItem('token', JSON.stringify(''));
 }
+if ( localStorage.getItem('role') === null ) {
+  localStorage.setItem('role', JSON.stringify(''));
+}
 document.body.style = 'background:black;';
 ReactDOM.render(
     <React.StrictMode>

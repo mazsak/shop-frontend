@@ -19,3 +19,9 @@ export const GetOrdersApi = async () => {
     const response = await API.get('user/orders', { headers: { Authorization: JSON.parse(localStorage.getItem('token')) } });
     return response.data;
 };
+
+export const GetUserRoleApi = async () => {
+    const response = await API.get('user/role', { headers: { Authorization: JSON.parse(localStorage.getItem('token')) } });
+    localStorage.setItem('role', JSON.stringify(response.data));
+    return response.data;
+};

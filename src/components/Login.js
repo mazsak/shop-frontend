@@ -9,7 +9,7 @@ import {
     Row,
     Col
 } from 'react-bootstrap';
-import { LoginApi } from './../requests/user';
+import { LoginApi, GetUserRoleApi } from './../requests/user';
 
 const Login = (props) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +25,7 @@ const Login = (props) => {
         console.log(token)
         if (token !== null) {
             localStorage.setItem('token', JSON.stringify('Bearer ' + token.jwttoken));
+            await GetUserRoleApi();
             document.location.href = "/";
         }
 
