@@ -15,6 +15,7 @@ const Register = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [mail, setMail] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [showErrorUsername, setShowErrorUsername] = useState(false);
     const [showErrorPassword, setShowErrorPassword] = useState(false);
@@ -36,6 +37,12 @@ const Register = (props) => {
                                 type="text"
                                 id="username"
                                 onChange={(e) => setUsername(e.target.value)}
+                            />
+                            <Form.Label htmlFor="mail">Mail</Form.Label>
+                            <Form.Control
+                                type="email"
+                                id="mail"
+                                onChange={(e) => setMail(e.target.value)}
                             />
                             <Form.Label htmlFor="password">Password</Form.Label>
                             <Form.Control
@@ -76,7 +83,7 @@ const Register = (props) => {
                                 if (register) {
                                     setIsLoading(true);
 
-                                    RegisterApi(username, password);
+                                    RegisterApi(username, password, mail);
 
                                     setIsLoading(false);
                                     document.location.href= '/login';
